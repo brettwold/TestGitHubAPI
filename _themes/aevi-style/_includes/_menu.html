@@ -1,0 +1,52 @@
+<div class="sidebar closed">
+    <nav>
+        <ul class="nav">
+            <li>
+                <a href="{{site.baseurl | relative}}index.html"><i class="fa fa-lg fa-book"></i> SDK Documentation</a>
+            </li>
+            {% assign sorted_pages = site.pages | sort:"menuorder" %}
+            <li>
+                <a href="{{site.baseurl | relative}}introduction/index.html"{% if page.url == '/introduction' %} class="active"{% endif %}><i class="fa fa-lg fa-bookmark"></i> Introduction</a>
+                {% if page.categories contains 'introduction' %}
+                <ul class="nav">
+                    {% for menupage in sorted_pages %}
+                    {% if menupage.categories contains 'introduction' %}
+                    {% if(menupage.menutitle) %}
+                    <li{% if page.url == menupage.url%} class="active"{% endif %}><a href="{{site.baseurl | relative}}{{menupage.url | remove_first: "/" }}">{{menupage.menutitle}}</a></li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+        </li>
+        <li>
+            <a href="{{site.baseurl | relative}}guides/index.html"{% if page.url == '/guides' %} class="active"{% endif %}><i class="fa fa-lg fa-bookmark"></i> Guides</a>
+            {% if page.categories contains 'guides' %}
+            <ul class="nav">
+                {% for menupage in sorted_pages %}
+                {% if menupage.categories contains 'guides' %}
+                {% if(menupage.menutitle) %}
+                <li{% if page.url == menupage.url%} class="active"{% endif %}><a href="{{site.baseurl | relative}}{{menupage.url | remove_first: "/" }}">{{menupage.menutitle}}</a></li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        </ul>
+        {% endif %}
+        </li>
+        <li>
+            <a href="{{site.baseurl | relative}}reference/index.html"{% if page.url == '/reference' %} class="active"{% endif %}><i class="fa fa-lg fa-coffee"></i> Reference</a>
+            {% if page.categories contains 'reference' %}
+            <ul class="nav">
+                {% for menupage in sorted_pages %}
+                {% if menupage.categories contains 'reference' %}
+                {% if(menupage.menutitle) %}
+                <li{% if page.url == menupage.url%} class="active"{% endif %}><a href="{{site.baseurl | relative}}{{menupage.url | remove_first: "/" }}">{{menupage.menutitle}}</a></li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        </ul>
+        {% endif %}
+        </li>
+        </ul>
+    </nav>
+</div>

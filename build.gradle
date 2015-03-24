@@ -1,6 +1,4 @@
-project.ext {
-    apiVersion = "2.3.0"
-}
+
 
 allprojects {
     project.version = project.apiVersion
@@ -35,6 +33,12 @@ task sdkDocumentation(type: GradleBuild) {
 
 private boolean isWindowsOs() {
   return System.properties['os.name'].toLowerCase().contains('windows')
+}
+
+task offlineDocumentation(type: GradleBuild) {
+    buildFile = 'build.gradle'
+    tasks = ['clean', 'selectStyle', 'sdkdoc']
+    startParameter.projectProperties = [jekyllStyle: "aevi-style", jekyllConfig: "_config_offline.yml"]
 }
 
 task onlineDocumentation(type: GradleBuild) {
@@ -74,18 +78,24 @@ task updateProjectVersion {
 //    htmlFile.write(htmlContent)
 //  }
 
-  def configFile = file("_config.yml")
-  def configText = configFile.getText()
-  def patternConfigVersion = java.util.regex.Pattern.compile("version: ${versionPattern}")
-  def matcherConfigVersion = patternConfigVersion.matcher(configText)
-  configText = matcherConfigVersion.replaceAll("version: ${project.version}")
-  configFile.write(configText)
+    def configFile = file("_config.yml")
+    def configText = configFile.getText()
+    def patternConfigVersion = java.util.regex.Pattern.compile("version: ${versionPattern}")
+    def matcherConfigVersion = patternConfigVersion.matcher(configText)
+    configText = matcherConfigVersion.replaceAll("version: ${project.version}")
+    configFile.write(configText)
 
-  def configOnlineFile = file("_config_online.yml")
-  def configOnlineText = configOnlineFile.getText()
-  def matcherConfigOnlineVersion = patternConfigVersion.matcher(configOnlineText)
-  configText = matcherConfigOnlineVersion.replaceAll("version: ${project.version}")
-  configFile.write(configText)
+    def configOnlineFile = file("_config_online.yml")
+    def configOnlineText = configOnlineFile.getText()
+    def matcherConfigOnlineVersion = patternConfigVersion.matcher(configOnlineText)
+    configOnlineText = matcherConfigOnlineVersion.replaceAll("version: ${project.version}")
+    configOnlineFile.write(configOnlineText)
+
+    def configOfflineFile = file("_config_offline.yml")
+    def configOfflineText = configOfflineFile.getText()
+    def matcherConfigOfflineVersion = patternConfigVersion.matcher(configOfflineText)
+    configOfflineText = matcherConfigOfflineVersion.replaceAll("version: ${project.version}")
+    configOfflineFile.write(configOfflineText)
 
 }
 
