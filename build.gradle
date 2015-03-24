@@ -1,0 +1,93 @@
+project.ext {
+    apiVersion = "2.3.0"
+}
+
+allprojects {
+    project.version = project.apiVersion
+}
+
+defaultTasks 'sdkDocumentation', 'selectStyle', 'sdkdoc'
+
+task sdkdoc(type: Exec) {
+    def command = isWindowsOs() ? 'jekyll.bat' : 'jekyll'
+    def configfile = "_config.yml"
+    if (project.hasProperty('jekyllConfig')){
+        configfile = jekyllConfig
+    }
+    commandLine command, 'build', '--config', configfile
+}
+
+task selectStyle(type: Exec) {
+  def style = "aevi-light"
+  if (project.hasProperty('jekyllStyle')){
+    style = jekyllStyle
+  }
+  def parameter = 'name='+style
+  def command = isWindowsOs() ? 'rake.bat' : 'rake'
+  commandLine command, 'theme:switch', parameter
+}
+
+task sdkDocumentation(type: GradleBuild) {
+  buildFile = 'build.gradle'
+  tasks = ['clean', 'selectStyle', 'sdkdoc']
+  startParameter.projectProperties = [jekyllStyle: "aevi-style", jekyllConfig: "_config.yml"]
+}
+
+private boolean isWindowsOs() {
+  return System.properties['os.name'].toLowerCase().contains('windows')
+}
+
+task onlineDocumentation(type: GradleBuild) {
+    buildFile = 'build.gradle'
+    tasks = ['clean','selectStyle', 'sdkdoc']
+    startParameter.projectProperties = [jekyllStyle: "online", jekyllConfig: "_config_online.yml"]
+}
+
+task blankDocumentation(type: GradleBuild) {
+  buildFile = 'build.gradle'
+  tasks = ['clean','selectStyle', 'sdkdoc']
+  startParameter.projectProperties = [jekyllStyle: "blank"]
+}
+
+task clean(type: Delete) {
+  delete "_site"
+  delete "javadoc"
+  delete "assets"
+}
+
+task updateProjectVersion {
+
+  def versionPattern="\\d+\\.\\d+\\.\\d+(-SNAPSHOT)?"
+
+//  def tree = fileTree(dir: '.')
+//  tree.include '**/*.html'
+//  tree.exclude '_site/**'
+//
+//  tree.each { htmlFile ->
+//
+//    def htmlText = htmlFile.getText()
+//
+//    def patternVersion = java.util.regex.Pattern.compile("<title>AEVI SDK documentation v${versionPattern}</title>")
+//    def matcherVersion = patternVersion.matcher(htmlText)
+//    def htmlContent = matcherVersion.replaceAll("<title>AEVI SDK documentation v${project.version}</title>")
+//
+//    htmlFile.write(htmlContent)
+//  }
+
+  def configFile = file("_config.yml")
+  def configText = configFile.getText()
+  def patternConfigVersion = java.util.regex.Pattern.compile("version: ${versionPattern}")
+  def matcherConfigVersion = patternConfigVersion.matcher(configText)
+  configText = matcherConfigVersion.replaceAll("version: ${project.version}")
+  configFile.write(configText)
+
+  def configOnlineFile = file("_config_online.yml")
+  def configOnlineText = configOnlineFile.getText()
+  def matcherConfigOnlineVersion = patternConfigVersion.matcher(configOnlineText)
+  configText = matcherConfigOnlineVersion.replaceAll("version: ${project.version}")
+  configFile.write(configText)
+
+}
+
+// only here to keep Android Studio happy
+task assemble {}
