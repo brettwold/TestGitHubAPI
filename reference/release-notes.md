@@ -163,3 +163,92 @@ Known Issues:
 * The AEVI Simulator does not prevent incorrect configuration by the user of the Merchant and Currency settings. This long-standing issue will be resolved in the next release (v1.2.5).
 * The AEVI Simulator SharedPreferences view does not display `string sets`. This issue will be resolved in the next release (v1.2.5).
 
+## Version 1.2.3 (June 27th 2014)
+
+Changes and fixes:
+
+* Reverted a documentation change. The document now states the Albert has tvdpi.
+* Updates to the Simulator to support the upcoming release of Albert Emulator.
+
+Known Issues:
+
+* The 'To the Movies' samples do not work on the Albert Device or the Emulator due to a restriction in using SHA-1 Hash Algorithms in Network Communication Protocol Algorithms
+* Additional configuration required to compile the Gradle based Samples using Android Studio Developer preview
+
+## Version 1.2.2 (June 13th 2014)
+
+Changes and fixes:
+
+* Documentation now indicates that Magstripe API is supported
+* Updated the AEVI sample to include compatibility checks
+* General updates to documentation including minor corrections and additional information
+* Minor bug-fixes and code improvements
+
+Known Issues:
+
+* The 'To the Movies' samples do not work on the Albert Device or the Emulator due to a restriction in using SHA-1 Hash Algorithms in Network Communication Protocol Algorithms
+* Additional configuration required to compile the Gradle based Samples using Android Studio Developer preview
+
+## Version 1.2.1 (May 30th 2014)
+
+Changes and fixes:
+
+* Addition of LED Notification API
+* General updates to Documentation including minor corrections and additional information
+* Minor bug-fixes and code improvements
+
+Known Issues:
+
+* The 'To the Movies' samples do not work on the Albert Device or the Emulator due to a restriction in using SHA-1 Hash Algorithms in Network Communication Protocol Algorithms
+* Additional configuration required to compile the Gradle based Samples using Android Studio Developer preview
+
+## Version 1.1.1 (February 17th 2014)
+
+Changes and fixes:
+
+* New documentation styling
+* Various fixes to documentation including clear display of SDK version number
+* Added the Compatibility API
+* Enhanced samples and various code improvements
+
+## Version 1.1.0 (February 14th 2014)
+
+Changes and fixes:
+
+* Tested on both CBA version of the Albert Device and the AEVI Simulator
+* Added a Currency selector in the Payment Sample
+* Various updates to the documentation
+* Various code improvements especially on the Albert device
+* Fixed ToTheMoves sample (Albert device only)
+* Added Platform Compatibility API (BETA)
+
+## Version 1.0.2 (November 22th 2013)
+
+* API compatibility table incorrectly states that MoTo Refunds are supported
+* Minor documentation improvements
+
+## Version 1.0.1 (November 15th 2013)
+
+* New documentation styling
+* System navigation buttons hiding in the Emulator
+* ToTheMovies Samples can now be installed simultaneously
+* ToTheMovies Classic checks for a network connection
+* Updated documentation and various code improvements
+
+## Version 1.0.0 (November 8th 2013)
+
+Changes and fixes:
+
+* A new eMail API and supporting documentation
+* A new Java based ToTheMovies sample app
+* Enhancements to the AEVISample App to include eMail API and HTTPs Get samples
+* New introduction section to using the Emulator
+* A new guide to building secure connections
+* Enhancements to the Permissions and Manifest Changes section
+* Enhancements to the App Development Lifecycle section
+* General documentation enhancements including restructuring and reformatting
+
+Known issues:
+* Cannot install both ToTheMovies Samples simultaneously
+* ToTheMovies Classic sample can crash when there is no network connection
+* AEVISample System Bar example does not hide nav bar buttons on the Emulator
