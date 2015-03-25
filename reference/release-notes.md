@@ -1,4 +1,28 @@
-## Version 2.3.0 (Feb 27th 2015)
+## Compatibility matrix for Albert
+
+The table below shows the platform software versions that were used on the Albert during the SDK release tests
+and are therefore compatible with the SDK release shown.
+
+SDK Version | AEVI Services Version | Payment Application | Albert OS Version |
+----------- | --------------------- | ------------------- | ----------------- |
+2.3.0       | 1.8.3.1               | 1.3.40              | 6.23 - patch 2    |
+2.2.0       | 1.8.1                 | 1.3.39              | 6.23 - patch 2    |
+2.1.0       | 1.8.0                 | 1.3.38              | 6.23              |
+2.1.0       | 1.7.0.4               | 1.3.37              | 6.23              |
+2.0.1       | 1.6.0.1               | 1.3.36              | 6.22              |
+------------| --------------------- | ------------------- | ----------------- |
+
+## Compatibility matrix for AEVI emulator
+
+The table below shows the AEVI emulator software versions that were used during the SDK release tests.
+
+SDK Version | AEVI Emulator Version |
+----------- | --------------------- |
+2.3.0       | 2.0.0                 |
+2.2.0       | 2.0.0                 |
+2.1.0       | 2.0.0                 |
+2.0.1       | 2.0.0                 |
+----------- | --------------------- |## Version 2.3.0 (Feb 27th 2015)
 
 Changes and fixes:
 
@@ -104,3 +128,35 @@ Known Issues:
 * AEVISample is not able to detect when the Payment Simulator has been installed in the wrong order. This will be resolved prior to the next planned release.
 * Albert OS Release 6.22.0 does not support the Authentication API. Further information is available in the release notes for the OS Release.
 * Albert OS Release 6.22.0 does not support Web based Applications such as ToTheMovies. Further information is available in the release notes for the OS Release.
+
+## Version 1.3.0 (September 30th 2014)
+
+Changes and fixes:
+
+* Updates to the Authentication API to enable Authentication to occur against specific roles
+* Provision of a new guide on using the Camera
+* Fixes to enable the ToTheMovies and ToTheMovies-Classic Samples to work
+* Enhancements and Bug Fixes to the Simulator including: enabling the display of Crashlog data; enable the display of `string set` data stored via SharedPreferences; validation on Merchant and Currency configuration to prevent incorrect configuration
+* Various documentation corrections and enhancements as a result of feedback from CBA and internal Review
+
+Known Issues:
+
+* `TerminalConfiguration.getTerminalConfiguration()` JavaDocs documentation needs to be updated with information on Exceptions that can be thrown.
+
+## Version 1.2.4 (August 15th 2014)
+
+Changes and fixes:
+
+* Enhancements to the AEVI-Simulator and AEVI-Sample apps to improve usability and stability
+* Updates to the Emulator documentation to align with the first release of the Emulator
+* Minor bugfix to the AEVI-Simulator to enable System Bar button hiding on the Emulator
+* Various documentation improvements following a detailed review by CBA
+* Updates to the Gradle, Maven and Eclipse build scripts for the sample projects
+* Minor updates to terms and conditions removing references to Pi and AppBank and fixing some typographical issues
+
+Known Issues:
+
+* The 'To the Movies' samples do not work on the Albert Device or the Emulator due to a restriction in using SHA-1 Hash Algorithms for Payment relevant Apps (as part of the Trusted Communications manager design). This persistent issue will be investigated as part of the next release (v1.2.5).
+* The AEVI Simulator does not prevent incorrect configuration by the user of the Merchant and Currency settings. This long-standing issue will be resolved in the next release (v1.2.5).
+* The AEVI Simulator SharedPreferences view does not display `string sets`. This issue will be resolved in the next release (v1.2.5).
+
