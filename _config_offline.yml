@@ -1,7 +1,7 @@
 name: AEVI API
 markdown: redcarpet
 highlighter: pygments
-version: 2.2.0
+version: 2.3.0
 category-list: [introduction, guides, reference, javadoc]
 exclude: [build.gradle, Aevi-SDK-Documentation.iml, aws.properties, local.properties, circle.yml, publish-live.sh, publish-develop.sh, publish-check.sh, Rakefile, Gemfile, Gemfile.lock, README.md]
 keep_files: [javadoc]
