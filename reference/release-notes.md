@@ -22,7 +22,10 @@ SDK Version | AEVI Emulator Version |
 2.2.0       | 2.0.0                 |
 2.1.0       | 2.0.0                 |
 2.0.1       | 2.0.0                 |
------------ | --------------------- |## Version 2.3.0 (Feb 27th 2015)
+----------- | --------------------- |
+
+
+## Version 2.3.0 (Feb 27th 2015)
 
 Changes and fixes:
 
