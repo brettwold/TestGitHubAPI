@@ -25,6 +25,27 @@ SDK Version | AEVI Emulator Version |
 ----------- | --------------------- |
 
 
+## Version 2.3.0 (Feb 27th 2015)
+
+Changes and fixes:
+
+* New TokenRequest type added to request token from payment application for the purpose of repeat payments or subscriptions
+* Updates to PaymentAppConfiguration to include a flag indicating if the payment application can support accessibility mode
+* Updates to AEVIRequest to include flag for accessibility mode
+* Altered logic of AEVI sample application to disable pre-auth complete and reversal buttons when they can't be used
+* AEVI sample application now shows accessibility mode flag in configuration screen
+* Additional card types added to CardType; OTHER_DEBIT, OTHER_CREDIT, OTHER_CHARGE
+* Complete documentation restyle; Javadocs now embedded within main SDK documentation will allow for better integration
+* Other minor documentation changes
+
+Known Issues:
+
+* The Albert OS 6.23 does not yet include support for Deposit or Token requests therefore they fail if attempted on an Albert device
+* Emulator and generic device do not display correct error messaging when ToTheMovies app is unable to print the ticket
+* The Device Simulator does not detect when the external Bixolon printer is out of paper.
+* A Tip amount is not allowed in a PaymentRequest Call when Tipping is disabled on the Payment App
+* Printer Compatibility does not detect when the Printer Module is not installed on the Device
+
 ## Version 2.2.0 (Jan 30th 2015)
 
 Changes and fixes:
